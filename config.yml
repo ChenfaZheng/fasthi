@@ -1,0 +1,99 @@
+# this is a configuration file, please edit the value in need
+# modify the key only if you know what you are doing
+# use editor's search function to find the key you want quickly
+
+# dir settings
+DIR: 
+  # workspace dir
+  work_dir: '.'
+  # fits data dir
+  fits_dir: './FAST_HI'
+  # library file dir
+  lib_dir: './lib'
+
+# run arguments
+RUN:
+  # max number of fits to run
+  # fits file will be skipped if filename in catalog dir
+  n_fits: 1000
+  # number of cores use to run.
+  # set to N to use (N % N_CPU) cores
+  # set to 0 to use ceil(N_CPU * use_ratio / 100) cores
+  # set to -N to use ((-N) % N_CPU) cores
+  # notice: if (N % N_CPU) == 0, will use ceil(N_CPU * use_ratio / 100) cores
+  n_cores: 8
+  # cpu usage ratio (number in percentage) when n_cores was set to 0
+  use_ratio: 100.0
+
+# analyse arguments
+ANALYSE:
+  # inner limit of baseline searching, unit in arcmin
+  bsl_inner: 7
+  # outer limit of baseline searching, unit in arcmin
+  bsl_outer: 12
+  # half width of baseline window (unit in arcmin)
+  bsl_hw: 20
+  # half height of baseline window (unit in arcmin)
+  bsl_hh: 10
+  # least valid number of samples for baseline
+  bsl_vn: 6
+  # save baseline figure (True or False)
+  bsl_save: True
+  # moving average kernel width for signal find fft argmaxs
+  bsl_ma: 3
+  # if remove index whose data is nan value in baseline
+  bsl_rm_nan: True
+  # half with/height of optmize square, unit in arcmin
+  opt_range: 0.5
+  # save optimize figure (True or False)
+  opt_save: True
+  # predicted W50, unit in km/s
+  w50: 600
+  # signal view scale
+  view_scale: 2
+  # integrate velocity range (+-) when optimizing signal, unit in km/s
+  int_vel: 200
+  # if use fft to denoise signal and baseline
+  fft_run: False
+  # number of maximum args to be removed by fft
+  fft_range: 10
+  # if use average mean to denoise before reduce
+  reduce_ifma: False
+  # moving average kernel width for process before reduce
+  reduce_ma: 5
+  # moving average kernel width for measuring
+  measure_ma: 5
+  # maximum int measure velocity, unit in km/s
+  intm_range: 1600
+  # mininal valid int measure velocity, unit in km/s
+  intm_valid: 400
+  # int measure apeature, unit in arcmin
+  intm_ap: 1.5
+  # int noise apeature, unit in arcmin
+  intn_in: 5
+  intn_out: 8
+
+
+# save arguments
+SAVE:
+  # name type of fits reult dir
+  # 'fits'  : use fits name as dir name
+  # 'time'  : use datetime (YYYYMMDD-hhmmss) as dir name
+  # 'both'  : use 'date-fitsname' as dir name
+  # 'both_r': use 'fitsname-date' as dir name
+  dir_type: 'both'
+  # name of catalog
+  name_catalog: 'catalog'
+
+# SDSS query/save arguments
+SDSS: 
+  skip_save: True
+  dec_width: 0.50
+  zmin: 0.00
+  zmax: 0.70
+
+# fits file read arguments
+FITS: 
+  # back string to recognize fits file
+  back_str: 'hifast.fits'
+
